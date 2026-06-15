@@ -81,7 +81,7 @@ export function Hero() {
                             <ArrowRight className="ml-2 h-5 w-5" />
                           </Link>
                         </Button>
-                        <Button size="xl" variant="outline" className="border-white/20 text-white hover:bg-white/10" asChild>
+                        <Button size="xl" variant="secondary" className="bg-white text-black hover:bg-white/90" asChild>
                           <Link href="/services">
                             <Play className="mr-2 h-5 w-5" />
                             {t('services')}
