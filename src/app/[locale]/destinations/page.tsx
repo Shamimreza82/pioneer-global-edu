@@ -1,9 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { SectionHeader, AnimatedSection } from '@/components/common/SectionWrapper'
-import { COUNTRIES } from '@/constants'
+import { COUNTRIES, IMAGES } from '@/constants'
 
 export default function DestinationsPage() {
   return (
@@ -23,8 +24,16 @@ export default function DestinationsPage() {
               <AnimatedSection key={country.id} delay={i * 0.08}>
                 <Link href={`/destinations/${country.id}`} className="group block h-full">
                   <div className="h-full rounded-xl border bg-card overflow-hidden hover:shadow-lg transition-all duration-300">
-                    <div className="aspect-[16/9] bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                      <span className="text-6xl">{country.flag}</span>
+                    <div className="aspect-[16/9] relative overflow-hidden">
+                      <Image
+                        src={IMAGES.countries[country.id as keyof typeof IMAGES.countries]}
+                        alt={country.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                      <span className="absolute top-3 left-3 text-3xl drop-shadow-lg">{country.flag}</span>
                     </div>
                     <div className="p-5">
                       <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{country.name}</h3>

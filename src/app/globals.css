@@ -133,3 +133,14 @@ html {
   background-color: var(--primary);
   color: var(--primary-foreground);
 }
+
+.swiper-pagination-bullet {
+  background: white !important;
+  opacity: 0.5 !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}

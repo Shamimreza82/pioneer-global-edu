@@ -1,11 +1,12 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { ArrowRight } from 'lucide-react'
 import { SectionHeader, AnimatedSection } from '@/components/common/SectionWrapper'
 import { Button } from '@/components/ui/button'
-import { COUNTRIES } from '@/constants'
+import { COUNTRIES, IMAGES } from '@/constants'
 
 export function FeaturedCountries() {
   const t = useTranslations('destinations')
@@ -23,8 +24,16 @@ export function FeaturedCountries() {
             <AnimatedSection key={country.id} delay={i * 0.1}>
               <Link href={`/destinations/${country.id}`} className="group block">
                 <div className="relative rounded-xl overflow-hidden border bg-card hover:shadow-lg transition-all duration-300">
-                  <div className="aspect-[16/9] bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <span className="text-6xl">{country.flag}</span>
+                  <div className="aspect-[16/9] relative overflow-hidden">
+                    <Image
+                      src={IMAGES.countries[country.id as keyof typeof IMAGES.countries]}
+                      alt={country.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    <span className="absolute top-3 left-3 text-3xl drop-shadow-lg">{country.flag}</span>
                   </div>
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-2">

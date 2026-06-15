@@ -742,3 +742,36 @@ export const BLOG_CATEGORIES = [
   'Country Guides',
   'Exam Preparation',
 ]
+
+export const IMAGES = {
+  hero: 'https://images.unsplash.com/photo-1523050854058-8df90110c7f1?w=800&q=80',
+  about: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80',
+  consultation: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
+  countries: {
+    usa: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&q=80',
+    uk: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80',
+    canada: 'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=600&q=80',
+    australia: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=80',
+    germany: 'https://images.unsplash.com/photo-1553531889-e6cf4d692b1b?w=600&q=80',
+    sweden: 'https://images.unsplash.com/photo-1551582045-6ec9c11d8697?w=600&q=80',
+    denmark: 'https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=600&q=80',
+    finland: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80',
+    malaysia: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=80',
+  },
+  universities: {
+    default: 'https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80',
+  },
+  blogs: {
+    default: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80',
+    study: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&q=80',
+    scholarship: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80',
+    visa: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80',
+  },
+  team: {
+    sarah: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80',
+    james: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80',
+    emily: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80',
+    michael: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80',
+  },
+  testimonial: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=200&q=80',
+} as const

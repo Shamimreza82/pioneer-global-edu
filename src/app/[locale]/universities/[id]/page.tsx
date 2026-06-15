@@ -2,12 +2,14 @@
 
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { ArrowLeft, Globe, MapPin, GraduationCap, DollarSign, Calendar, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ConsultationForm } from '@/components/forms/ConsultationForm'
 import { AnimatedSection } from '@/components/common/SectionWrapper'
+import { IMAGES } from '@/constants'
 
 const UNIVERSITIES = [
   { id: '1', name: 'Stanford University', country: 'USA', ranking: 3, description: 'Stanford University is a private research university in Stanford, California. Founded in 1885, it is known for its academic strength, wealth, and proximity to Silicon Valley.', location: 'Stanford, California', website: 'https://stanford.edu', programs: ['Computer Science', 'Engineering', 'Business', 'Law', 'Medicine'], tuitionFeeRange: '$55,000 - $60,000', applicationDeadline: 'January 2, 2025', intake: ['Fall', 'Winter'] },
@@ -39,8 +41,14 @@ export default function UniversityDetailPage() {
             </Link>
           </Button>
           <div className="flex items-start gap-6 mb-6">
-            <div className="rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 p-6">
-              <GraduationCap className="h-16 w-16 text-primary/40" />
+            <div className="relative w-24 h-24 rounded-xl overflow-hidden flex-shrink-0">
+              <Image
+                src={IMAGES.universities.default}
+                alt={uni.name}
+                fill
+                className="object-cover"
+                sizes="96px"
+              />
             </div>
             <div>
               <div className="flex items-center gap-3 mb-2">

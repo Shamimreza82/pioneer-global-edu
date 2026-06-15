@@ -2,6 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import {
   GraduationCap, Globe, BookOpen, FileCheck, Plane, Home,
@@ -9,7 +10,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ConsultationForm } from '@/components/forms/ConsultationForm'
-import { SERVICES } from '@/constants'
+import { SERVICES, IMAGES } from '@/constants'
 import { notFound } from 'next/navigation'
 
 const iconMap: Record<string, LucideIcon> = {
@@ -35,10 +36,23 @@ export default function ServiceDetailPage() {
             </Link>
           </Button>
           <div className="max-w-3xl">
-            <div className="rounded-full bg-primary/10 p-4 w-fit mb-4">
-              <Icon className="h-10 w-10 text-primary" />
+            <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden mb-6">
+            <Image
+              src={IMAGES.blogs.default}
+              alt=""
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="absolute bottom-4 left-4">
+              <div className="rounded-full bg-white/20 backdrop-blur p-3 w-fit mb-2">
+                <Icon className="h-8 w-8 text-white" />
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
               {t.has(`${sKey}.title`) ? t(`${sKey}.title`) : service.title}
             </h1>
             <p className="text-xl text-muted-foreground">

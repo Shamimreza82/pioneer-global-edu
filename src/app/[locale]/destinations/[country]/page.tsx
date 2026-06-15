@@ -2,12 +2,13 @@
 
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { ArrowLeft, Check, GraduationCap, DollarSign, Home, FileCheck, Building2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ConsultationForm } from '@/components/forms/ConsultationForm'
 import { AnimatedSection } from '@/components/common/SectionWrapper'
-import { COUNTRIES } from '@/constants'
+import { COUNTRIES, IMAGES } from '@/constants'
 import { notFound } from 'next/navigation'
 
 export default function CountryDetailPage() {
@@ -25,11 +26,22 @@ export default function CountryDetailPage() {
               <ArrowLeft className="mr-2 h-4 w-4" /> {t('viewAll')}
             </Link>
           </Button>
-          <div className="flex items-center gap-4 mb-4">
-            <span className="text-5xl">{country.flag}</span>
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold">{t('benefits')} {country.name}</h1>
-              <p className="text-xl text-muted-foreground">{country.description}</p>
+          <div className="relative rounded-2xl overflow-hidden mb-8 aspect-[21/9]">
+            <Image
+              src={IMAGES.countries[country.id as keyof typeof IMAGES.countries]}
+              alt={country.name}
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+            <div className="absolute bottom-6 left-6 flex items-center gap-4">
+              <span className="text-5xl drop-shadow-lg">{country.flag}</span>
+              <div className="text-white">
+                <h1 className="text-4xl md:text-5xl font-bold">{t('benefits')} {country.name}</h1>
+                <p className="text-xl text-white/80">{country.description}</p>
+              </div>
             </div>
           </div>
         </div>

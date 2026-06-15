@@ -1,8 +1,10 @@
 'use client'
 
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Target, Eye, Heart, Shield, Lightbulb, Handshake } from 'lucide-react'
 import { AnimatedSection } from '@/components/common/SectionWrapper'
+import { IMAGES } from '@/constants'
 
 const values = [
   { icon: Heart, key: 'passion' },
@@ -74,10 +76,14 @@ export function AboutContent() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {team.map((member, i) => (
                 <AnimatedSection key={member.name} delay={i * 0.1} className="text-center">
-                  <div className="rounded-full bg-muted w-24 h-24 mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-3xl text-muted-foreground">
-                      {member.name.split(' ').map(n => n[0]).join('')}
-                    </span>
+                  <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-muted">
+                    <Image
+                      src={Object.values(IMAGES.team)[i]}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      sizes="96px"
+                    />
                   </div>
                   <h4 className="font-semibold">{member.name}</h4>
                   <p className="text-sm text-primary mb-2">{member.role}</p>

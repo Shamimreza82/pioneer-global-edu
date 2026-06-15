@@ -1,11 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { ArrowRight, Calendar, Clock } from 'lucide-react'
 import { SectionHeader, AnimatedSection } from '@/components/common/SectionWrapper'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { IMAGES } from '@/constants'
 import { formatDate } from '@/lib/utils'
 
 const SAMPLE_BLOGS = [
@@ -29,8 +31,14 @@ export function LatestBlogs() {
             <AnimatedSection key={blog.id} delay={i * 0.1}>
               <Link href={`/blogs/${blog.slug}`} className="group block h-full">
                 <div className="h-full rounded-xl border bg-card overflow-hidden hover:shadow-lg transition-all duration-300">
-                  <div className="aspect-[16/9] bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <span className="text-4xl text-muted-foreground/40">📚</span>
+                  <div className="aspect-[16/9] relative overflow-hidden">
+                    <Image
+                      src={IMAGES.blogs.default}
+                      alt={blog.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                   </div>
                   <div className="p-5">
                     <Badge variant="secondary" className="mb-3">

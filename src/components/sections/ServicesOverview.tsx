@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import {
   GraduationCap, Globe, BookOpen, FileCheck, Plane, Home,
@@ -8,7 +9,7 @@ import {
 } from 'lucide-react'
 import { SectionHeader, AnimatedSection } from '@/components/common/SectionWrapper'
 import { Button } from '@/components/ui/button'
-import { SERVICES } from '@/constants'
+import { SERVICES, IMAGES } from '@/constants'
 
 const iconMap: Record<string, LucideIcon> = {
   GraduationCap, Globe, BookOpen, FileCheck, Plane, Home, HeartHandshake,
@@ -31,16 +32,28 @@ export function ServicesOverview() {
             return (
               <AnimatedSection key={service.id} delay={i * 0.08}>
                 <Link href={`/services/${service.id}`} className="group block h-full">
-                  <div className="h-full rounded-xl border bg-card p-6 hover:shadow-lg hover:border-primary/50 transition-all duration-300">
-                    <div className="rounded-full bg-primary/10 p-3 w-fit mb-4 group-hover:bg-primary/20 transition-colors">
-                      <Icon className="h-6 w-6 text-primary" />
+                  <div className="h-full rounded-xl border bg-card overflow-hidden hover:shadow-lg hover:border-primary/50 transition-all duration-300">
+                    <div className="aspect-[16/9] relative overflow-hidden">
+                      <Image
+                        src={IMAGES.blogs.default}
+                        alt={service.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     </div>
-                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                      {t.has(key) ? t(key) : service.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
-                      {t.has(`items.${service.id}.description`) ? t(`items.${service.id}.description`) : service.description}
-                    </p>
+                    <div className="p-5">
+                      <div className="rounded-full bg-primary/10 p-3 w-fit mb-3">
+                        <Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">
+                        {t.has(key) ? t(key) : service.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2">
+                        {t.has(`items.${service.id}.description`) ? t(`items.${service.id}.description`) : service.description}
+                      </p>
+                    </div>
                   </div>
                 </Link>
               </AnimatedSection>

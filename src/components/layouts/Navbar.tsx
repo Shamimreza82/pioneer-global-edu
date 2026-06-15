@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -13,8 +13,11 @@ import { cn } from '@/lib/utils'
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const { setTheme, resolvedTheme } = useTheme()
+
+  useEffect(() => setMounted(true), [])
   const t = useTranslations('nav')
   const navLabel = (label: string) => {
     const key = label.toLowerCase().replace(/[\s-]+/g, '')
@@ -77,7 +80,7 @@ export function Navbar() {
             onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
             aria-label="Toggle theme"
           >
-            {resolvedTheme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            {mounted && (resolvedTheme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
           </Button>
           <Button asChild className="hidden sm:inline-flex">
             <Link href="/consultation">{t('freeConsultation')}</Link>

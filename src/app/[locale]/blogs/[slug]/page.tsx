@@ -2,11 +2,13 @@
 
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ConsultationForm } from '@/components/forms/ConsultationForm'
+import { IMAGES } from '@/constants'
 import { formatDate } from '@/lib/utils'
 import { notFound } from 'next/navigation'
 
@@ -29,6 +31,10 @@ export default function BlogDetailPage() {
           <Button variant="ghost" asChild className="mb-6">
             <Link href="/blogs"><ArrowLeft className="mr-2 h-4 w-4" /> {t('backToBlog')}</Link>
           </Button>
+          <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden mb-6">
+            <Image src={IMAGES.blogs.default} alt="" fill className="object-cover" priority sizes="100vw" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+          </div>
           <Badge variant="secondary" className="mb-4">{blog.category}</Badge>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 max-w-3xl">{blog.title}</h1>
           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
