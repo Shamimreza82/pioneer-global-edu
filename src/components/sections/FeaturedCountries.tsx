@@ -37,13 +37,19 @@ export function FeaturedCountries() {
                   </div>
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-bold text-lg">{country.name}</h3>
-                      <ArrowRight className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <h3 className="font-bold text-lg group-hover:text-primary transition-colors">{country.name}</h3>
+                      <ArrowRight className="h-4 w-4 text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                     </div>
                     <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{country.description}</p>
                     <div className="flex gap-3 text-xs text-muted-foreground">
-                      <span>{country.universities}+ {t('universities')}</span>
-                      <span>{country.students}+ {t('students')}</span>
+                      <span className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                        {country.universities}+ {t('universities')}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                        {country.students}+ {t('students')}
+                      </span>
                     </div>
                   </div>
                 </div>

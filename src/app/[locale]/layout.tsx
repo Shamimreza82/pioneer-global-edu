@@ -6,6 +6,7 @@ import { Navbar } from '@/components/layouts/Navbar'
 import { Footer } from '@/components/layouts/Footer'
 import { ScrollToTop } from '@/components/common/ScrollToTop'
 import { WhatsAppButton } from '@/components/common/WhatsAppButton'
+import { SmoothScroll } from '@/components/common/SmoothScroll'
 import { notFound } from 'next/navigation'
 
 type Props = {
@@ -35,11 +36,13 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <Providers>
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <ScrollToTop />
-        <WhatsAppButton phone={process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '+15551234567'} />
+        <SmoothScroll>
+          <Navbar />
+          <main className="flex-1 pt-20">{children}</main>
+          <Footer />
+          <ScrollToTop />
+          <WhatsAppButton phone={process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '+15551234567'} />
+        </SmoothScroll>
       </Providers>
     </NextIntlClientProvider>
   )

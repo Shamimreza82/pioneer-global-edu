@@ -32,25 +32,25 @@ export function ServicesOverview() {
             return (
               <AnimatedSection key={service.id} delay={i * 0.08}>
                 <Link href={`/services/${service.id}`} className="group block h-full">
-                  <div className="h-full rounded-xl border bg-card overflow-hidden hover:shadow-lg hover:border-primary/50 transition-all duration-300">
+                  <div className="h-full rounded-xl border bg-card overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     <div className="aspect-[16/9] relative overflow-hidden">
                       <Image
                         src={IMAGES.blogs.default}
                         alt={service.title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                      <div className="absolute bottom-3 left-3 rounded-full bg-white/20 backdrop-blur p-2.5">
+                        <Icon className="h-5 w-5 text-white" />
+                      </div>
                     </div>
                     <div className="p-5">
-                      <div className="rounded-full bg-primary/10 p-3 w-fit mb-3">
-                        <Icon className="h-5 w-5 text-primary" />
-                      </div>
-                      <h3 className="font-semibold mb-1 group-hover:text-primary transition-colors">
+                      <h3 className="font-semibold mb-1.5 group-hover:text-primary transition-colors">
                         {t.has(key) ? t(key) : service.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground line-clamp-2">
+                      <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
                         {t.has(`items.${service.id}.description`) ? t(`items.${service.id}.description`) : service.description}
                       </p>
                     </div>
