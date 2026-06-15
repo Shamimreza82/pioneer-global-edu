@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react'
 import { SectionHeader } from '@/components/common/SectionWrapper'
@@ -10,6 +11,7 @@ import { cn } from '@/lib/utils'
 
 export function Testimonials() {
   const [current, setCurrent] = useState(0)
+  const t = useTranslations('testimonials')
   const testimonial = TESTIMONIALS[current]
 
   const next = () => setCurrent((c) => (c + 1) % TESTIMONIALS.length)
@@ -19,8 +21,8 @@ export function Testimonials() {
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <SectionHeader
-          title="What Our Students Say"
-          subtitle="Hear from students who achieved their study abroad dreams with us"
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
         <div className="max-w-3xl mx-auto">
           <AnimatePresence mode="wait">

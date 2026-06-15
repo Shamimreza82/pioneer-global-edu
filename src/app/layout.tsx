@@ -1,10 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { SITE_CONFIG } from '@/constants'
-import { Providers } from '@/providers'
-import { Navbar } from '@/components/layouts/Navbar'
-import { Footer } from '@/components/layouts/Footer'
-import { ScrollToTop } from '@/components/common/ScrollToTop'
 import './globals.css'
 
 const geistSans = Geist({
@@ -43,11 +39,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
@@ -66,14 +58,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col">
-        <Providers>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <ScrollToTop />
-        </Providers>
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   )
 }

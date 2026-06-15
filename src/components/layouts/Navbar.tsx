@@ -1,18 +1,21 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown, GraduationCap, Moon, Sun } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { NAV_LINKS, SITE_CONFIG } from '@/constants'
 import { useTheme } from '@/providers/theme-provider'
+import { LanguageSwitcher } from '@/i18n/LanguageSwitcher'
 import { cn } from '@/lib/utils'
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const { setTheme, resolvedTheme } = useTheme()
+  const t = useTranslations('nav')
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-xl">
@@ -39,7 +42,7 @@ export function Navbar() {
                   openDropdown === link.label && 'bg-accent'
                 )}
               >
-                {link.label}
+                {t(link.label.toLowerCase().replace(/\s+/g, '')) || link.label}
                 {link.children && (
                   <ChevronDown className={cn('h-4 w-4 transition-transform', openDropdown === link.label && 'rotate-180')} />
                 )}
@@ -52,7 +55,7 @@ export function Navbar() {
                       href={child.href}
                       className="flex px-3 py-2 text-sm rounded-md hover:bg-accent hover:text-accent-foreground"
                     >
-                      {child.label}
+                      {t(child.label.toLowerCase().replace(/[\s-]+/g, '')) || child.label}
                     </Link>
                   ))}
                 </div>
@@ -61,7 +64,8 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
+          <LanguageSwitcher />
           <Button
             variant="ghost"
             size="icon"
@@ -71,7 +75,7 @@ export function Navbar() {
             {resolvedTheme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
           <Button asChild className="hidden sm:inline-flex">
-            <Link href="/consultation">Free Consultation</Link>
+            <Link href="/consultation">{t('freeConsultation')}</Link>
           </Button>
           <Button
             variant="ghost"
@@ -101,7 +105,7 @@ export function Navbar() {
                     className="flex items-center justify-between px-3 py-2 text-sm font-medium rounded-md hover:bg-accent"
                     onClick={() => !link.children && setMobileOpen(false)}
                   >
-                    {link.label}
+                    {t(link.label.toLowerCase().replace(/\s+/g, '')) || link.label}
                     {link.children && (
                       <ChevronDown
                         className={cn(
@@ -120,7 +124,7 @@ export function Navbar() {
                           className="flex px-3 py-2 text-sm rounded-md hover:bg-accent"
                           onClick={() => setMobileOpen(false)}
                         >
-                          {child.label}
+                          {t(child.label.toLowerCase().replace(/[\s-]+/g, '')) || child.label}
                         </Link>
                       ))}
                     </div>
@@ -130,7 +134,7 @@ export function Navbar() {
               <div className="pt-2">
                 <Button asChild className="w-full">
                   <Link href="/consultation" onClick={() => setMobileOpen(false)}>
-                    Free Consultation
+                    {t('freeConsultation')}
                   </Link>
                 </Button>
               </div>

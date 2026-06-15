@@ -1,20 +1,22 @@
 'use client'
 
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { ArrowRight } from 'lucide-react'
 import { SectionHeader, AnimatedSection } from '@/components/common/SectionWrapper'
 import { Button } from '@/components/ui/button'
 import { COUNTRIES } from '@/constants'
 
 export function FeaturedCountries() {
+  const t = useTranslations('destinations')
   const displayed = COUNTRIES.slice(0, 6)
 
   return (
     <section className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
         <SectionHeader
-          title="Study Destinations"
-          subtitle="Choose from top study destinations across the globe"
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayed.map((country, i) => (
@@ -31,8 +33,8 @@ export function FeaturedCountries() {
                     </div>
                     <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{country.description}</p>
                     <div className="flex gap-3 text-xs text-muted-foreground">
-                      <span>{country.universities}+ Universities</span>
-                      <span>{country.students}+ Students</span>
+                      <span>{country.universities}+ {t('universities')}</span>
+                      <span>{country.students}+ {t('students')}</span>
                     </div>
                   </div>
                 </div>
@@ -43,7 +45,7 @@ export function FeaturedCountries() {
         <div className="text-center mt-8">
           <Button variant="outline" asChild>
             <Link href="/destinations">
-              View All Destinations <ArrowRight className="ml-2 h-4 w-4" />
+              {t('viewAll')} <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>

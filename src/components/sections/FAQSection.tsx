@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { SectionHeader, AnimatedSection } from '@/components/common/SectionWrapper'
@@ -9,13 +10,14 @@ import { cn } from '@/lib/utils'
 
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const t = useTranslations('faq')
 
   return (
     <section className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4 max-w-3xl">
         <SectionHeader
-          title="Frequently Asked Questions"
-          subtitle="Find answers to common questions about studying abroad"
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
         <div className="space-y-3">
           {FAQS.map((faq, i) => (

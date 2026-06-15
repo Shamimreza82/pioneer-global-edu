@@ -1,25 +1,36 @@
 'use client'
 
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { GraduationCap, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react'
 import { SITE_CONFIG, NAV_LINKS, SERVICES, COUNTRIES } from '@/constants'
 
-const footerLinks = [
-  {
-    title: 'Quick Links',
-    links: NAV_LINKS.filter((l) => !l.children).map((l) => ({ label: l.label, href: l.href })),
-  },
-  {
-    title: 'Services',
-    links: SERVICES.slice(0, 5).map((s) => ({ label: s.title, href: `/services/${s.id}` })),
-  },
-  {
-    title: 'Destinations',
-    links: COUNTRIES.slice(0, 6).map((c) => ({ label: c.name, href: `/destinations/${c.id}` })),
-  },
-]
-
 export function Footer() {
+  const t = useTranslations()
+  const destT = useTranslations('destinations')
+  const servT = useTranslations('services')
+
+  const footerLinks = [
+    {
+      title: t('footer.quickLinks'),
+      links: NAV_LINKS.filter((l) => !l.children).map((l) => ({
+        label: t(`nav.${l.label.toLowerCase().replace(/\s+/g, '')}`) || l.label,
+        href: l.href,
+      })),
+    },
+    {
+      title: servT('title'),
+      links: SERVICES.slice(0, 5).map((s) => ({
+        label: servT.has(`items.${s.id}.title`) ? servT(`items.${s.id}.title`) : s.title,
+        href: `/services/${s.id}`,
+      })),
+    },
+    {
+      title: destT('title'),
+      links: COUNTRIES.slice(0, 6).map((c) => ({ label: c.name, href: `/destinations/${c.id}` })),
+    },
+  ]
+
   return (
     <footer className="bg-muted/50 border-t">
       <div className="container mx-auto px-4 py-12">
@@ -31,24 +42,22 @@ export function Footer() {
                 {SITE_CONFIG.name}
               </span>
             </Link>
-            <p className="text-muted-foreground mb-4 max-w-sm">
-              {SITE_CONFIG.tagline}. We help students achieve their dreams of studying at top universities worldwide.
-            </p>
+            <p className="text-muted-foreground mb-4 max-w-sm">{t('site.tagline')}</p>
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span>{SITE_CONFIG.address}</span>
+                <span>{t('site.address')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary" />
                 <a href={`mailto:${SITE_CONFIG.email}`} className="hover:text-primary transition-colors">
-                  {SITE_CONFIG.email}
+                  {t('site.email')}
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-primary" />
                 <a href={`tel:${SITE_CONFIG.phone}`} className="hover:text-primary transition-colors">
-                  {SITE_CONFIG.phone}
+                  {t('site.phone')}
                 </a>
               </div>
             </div>
@@ -76,7 +85,7 @@ export function Footer() {
 
         <div className="border-t mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
+            &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. {t('footer.rights')}
           </p>
           <div className="flex gap-4 text-sm text-muted-foreground">
             <a href={SITE_CONFIG.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">

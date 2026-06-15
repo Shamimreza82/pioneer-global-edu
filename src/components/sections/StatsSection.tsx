@@ -1,10 +1,14 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { STATS } from '@/constants'
 import { AnimatedSection } from '@/components/common/SectionWrapper'
 
 export function StatsSection() {
+  const t = useTranslations('stats')
+  const statKeys = ['studentsPlaced', 'partnerUniversities', 'countries', 'successRate', 'yearsExperience', 'satisfaction']
+
   return (
     <section className="py-16 md:py-24 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
@@ -20,7 +24,9 @@ export function StatsSection() {
               >
                 {stat.value}
               </motion.div>
-              <div className="text-primary-foreground/80 text-sm">{stat.label}</div>
+              <div className="text-primary-foreground/80 text-sm">
+                {t(statKeys[i]) || stat.label}
+              </div>
             </AnimatedSection>
           ))}
         </div>

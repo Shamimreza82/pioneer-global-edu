@@ -2,6 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -17,6 +18,7 @@ const BLOGS = [
 
 export default function BlogDetailPage() {
   const params = useParams()
+  const t = useTranslations('blog')
   const blog = BLOGS.find((b) => b.slug === params.slug)
   if (!blog) notFound()
 
@@ -25,7 +27,7 @@ export default function BlogDetailPage() {
       <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-background">
         <div className="container mx-auto px-4">
           <Button variant="ghost" asChild className="mb-6">
-            <Link href="/blogs"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Blog</Link>
+            <Link href="/blogs"><ArrowLeft className="mr-2 h-4 w-4" /> {t('backToBlog')}</Link>
           </Button>
           <Badge variant="secondary" className="mb-4">{blog.category}</Badge>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 max-w-3xl">{blog.title}</h1>
@@ -51,8 +53,8 @@ export default function BlogDetailPage() {
             <div>
               <div className="sticky top-24">
                 <ConsultationForm
-                  title="Need Guidance?"
-                  subtitle="Our experts can help you with your study abroad plans."
+                  title={t('needGuidance')}
+                  subtitle={t('guidanceSubtitle')}
                 />
               </div>
             </div>

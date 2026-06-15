@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import {
   GraduationCap, Globe, BookOpen, FileCheck, Plane, Home,
   HeartHandshake, ArrowRight, type LucideIcon,
@@ -14,16 +15,19 @@ const iconMap: Record<string, LucideIcon> = {
 }
 
 export function ServicesOverview() {
+  const t = useTranslations('services')
+
   return (
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <SectionHeader
-          title="Our Services"
-          subtitle="Comprehensive support throughout your study abroad journey"
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {SERVICES.map((service, i) => {
             const Icon = iconMap[service.icon] || GraduationCap
+            const key = `items.${service.id}.title`
             return (
               <AnimatedSection key={service.id} delay={i * 0.08}>
                 <Link href={`/services/${service.id}`} className="group block h-full">
@@ -32,9 +36,11 @@ export function ServicesOverview() {
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                      {service.title}
+                      {t.has(key) ? t(key) : service.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">{service.description}</p>
+                    <p className="text-sm text-muted-foreground line-clamp-2">
+                      {t.has(`items.${service.id}.description`) ? t(`items.${service.id}.description`) : service.description}
+                    </p>
                   </div>
                 </Link>
               </AnimatedSection>
@@ -44,7 +50,7 @@ export function ServicesOverview() {
         <div className="text-center mt-8">
           <Button variant="outline" asChild>
             <Link href="/services">
-              View All Services <ArrowRight className="ml-2 h-4 w-4" />
+              {t('viewAll')} <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>

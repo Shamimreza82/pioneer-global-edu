@@ -1,0 +1,295 @@
+{
+  "site": {
+    "name": "Pioneer Global Edu",
+    "tagline": "Your Gateway to Global Education",
+    "description": "Premium education consultancy helping students achieve their dreams of studying abroad at top universities worldwide.",
+    "email": "info@pioneerglobaledu.com",
+    "phone": "+1 (555) 123-4567",
+    "address": "123 Education Street, Suite 200, New York, NY 10001, USA",
+    "workingHours": "Mon - Fri: 9:00 AM - 6:00 PM"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "destinations": "Destinations",
+    "universities": "Universities",
+    "scholarships": "Scholarships",
+    "blog": "Blog",
+    "about": "About Us",
+    "aboutus": "About Us",
+    "contact": "Contact",
+    "freeConsultation": "Free Consultation",
+    "backToWebsite": "Back to Website"
+  },
+  "hero": {
+    "trustedBy": "Trusted by 10,000+ students worldwide",
+    "title": "Your Gateway to",
+    "titleHighlight": "Global Education",
+    "subtitle": "Expert guidance to help you gain admission to top universities worldwide. From counseling to visa support, we handle it all.",
+    "cta": "Start Your Journey",
+    "services": "Our Services"
+  },
+  "stats": {
+    "studentsPlaced": "Students Placed",
+    "partnerUniversities": "Partner Universities",
+    "countries": "Countries",
+    "successRate": "Success Rate",
+    "yearsExperience": "Years Experience",
+    "satisfaction": "Student Satisfaction"
+  },
+  "destinations": {
+    "title": "Study Destinations",
+    "subtitle": "Choose from top study destinations across the globe",
+    "viewAll": "View All Destinations",
+    "universities": "Universities",
+    "students": "Students",
+    "benefits": "Benefits of Studying in",
+    "visaRequirements": "Visa Requirements",
+    "admissionProcess": "Admission Process",
+    "tuitionCosts": "Tuition & Living Costs",
+    "tuitionFees": "Tuition Fees",
+    "livingCosts": "Living Costs",
+    "scholarshipInfo": "Scholarship Information",
+    "details": "View Details"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive support throughout your study abroad journey",
+    "viewAll": "View All Services",
+    "benefits": "Benefits",
+    "process": "Our Process",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started Today",
+    "startSubtitle": "Fill out the form and we'll contact you within 24 hours.",
+    "backToServices": "Back to Services",
+    "items": {
+      "student-counseling": {
+        "title": "Student Counseling",
+        "description": "Personalized guidance to help you choose the right academic path for your future."
+      },
+      "university-selection": {
+        "title": "University Selection",
+        "description": "Expert assistance in finding the perfect university that matches your goals."
+      },
+      "admission-processing": {
+        "title": "Admission Processing",
+        "description": "End-to-end support for your university applications."
+      },
+      "visa-guidance": {
+        "title": "Visa Guidance",
+        "description": "Comprehensive visa application support to maximize your chances of approval."
+      },
+      "scholarship-assistance": {
+        "title": "Scholarship Assistance",
+        "description": "Help finding and applying for scholarships to make education affordable."
+      },
+      "accommodation-support": {
+        "title": "Accommodation Support",
+        "description": "Assistance finding suitable and safe accommodation abroad."
+      },
+      "pre-departure-guidance": {
+        "title": "Pre-Departure Guidance",
+        "description": "Comprehensive orientation to prepare for your journey abroad."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "subtitle": "What sets us apart from other education consultancies",
+    "expertCounselors": {
+      "title": "Expert Counselors",
+      "description": "Our team consists of certified education counselors with years of international experience."
+    },
+    "personalizedApproach": {
+      "title": "Personalized Approach",
+      "description": "We create tailored study plans based on your unique academic profile and career goals."
+    },
+    "endToEndSupport": {
+      "title": "End-to-End Support",
+      "description": "From counseling to post-arrival assistance, we support you at every step."
+    },
+    "visaSuccess": {
+      "title": "Visa Success Rate",
+      "description": "Our proven track record of 98% visa approval rate speaks for our expertise."
+    },
+    "globalNetwork": {
+      "title": "Global Network",
+      "description": "Partnerships with 500+ universities across 50+ countries worldwide."
+    },
+    "scholarshipAccess": {
+      "title": "Scholarship Access",
+      "description": "We help you find and secure scholarships worth up to 100% of tuition fees."
+    }
+  },
+  "testimonials": {
+    "title": "What Our Students Say",
+    "subtitle": "Hear from students who achieved their study abroad dreams with us"
+  },
+  "consultation": {
+    "title": "Book Your Free Consultation",
+    "subtitle": "Fill out the form and our expert counselors will get back to you within 24 hours.",
+    "successTitle": "Application Submitted!",
+    "successMessage": "Thank you for reaching out! Our team will contact you within 24 hours to discuss your study abroad options.",
+    "submitAnother": "Submit Another Request",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "preferredCountry": "Preferred Country",
+    "desiredCourse": "Desired Course",
+    "qualification": "Academic Qualification",
+    "intake": "Preferred Intake",
+    "message": "Message (Optional)",
+    "submit": "Submit Application",
+    "submitting": "Submitting...",
+    "selectCountry": "Select a country",
+    "selectQualification": "Select qualification",
+    "selectIntake": "Select intake",
+    "messagePlaceholder": "Tell us more about your goals and requirements..."
+  },
+  "blog": {
+    "title": "Our Blog",
+    "subtitle": "Stay informed with the latest study abroad tips, guides, and industry insights",
+    "viewAll": "View All Articles",
+    "search": "Search articles...",
+    "allCategories": "All Categories",
+    "backToBlog": "Back to Blog",
+    "needGuidance": "Need Guidance?",
+    "guidanceSubtitle": "Our experts can help you with your study abroad plans."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about studying abroad"
+  },
+  "cta": {
+    "title": "Ready to Start Your Study Abroad Journey?",
+    "subtitle": "Take the first step towards your global education. Our expert counselors are here to guide you.",
+    "bookConsultation": "Book Free Consultation",
+    "contactUs": "Contact Us"
+  },
+  "about": {
+    "title": "About Pioneer Global Edu",
+    "subtitle": "We are passionate about transforming lives through international education",
+    "story": "Our Story",
+    "story1": "Founded in 2010, Pioneer Global Edu started with a simple mission: to make quality international education accessible to students worldwide. What began as a small counseling office has grown into a premier education consultancy serving thousands of students annually.",
+    "story2": "Over the past 15 years, we have helped over 10,000 students gain admission to their dream universities across 50+ countries. Our success is built on personalized guidance, expert knowledge, and unwavering commitment to each student's unique journey.",
+    "years": "Years of Excellence",
+    "mission": "Our Mission",
+    "missionText": "To empower students with the knowledge, guidance, and support they need to successfully navigate the complex process of studying abroad.",
+    "vision": "Our Vision",
+    "visionText": "To be the world's most trusted education consultancy, creating a global community of educated, empowered individuals.",
+    "values": "Our Core Values",
+    "team": "Meet Our Team",
+    "values": {
+      "passion": { "title": "Passion", "description": "We are genuinely passionate about helping students achieve their educational dreams." },
+      "integrity": { "title": "Integrity", "description": "We maintain the highest standards of honesty and transparency in all our dealings." },
+      "innovation": { "title": "Innovation", "description": "We continuously innovate our approach to provide the best guidance and support." },
+      "commitment": { "title": "Commitment", "description": "We are committed to each student's success from first contact to post-arrival." }
+    }
+  },
+  "scholarships": {
+    "title": "Scholarships",
+    "subtitle": "Discover funding opportunities to make your education abroad more affordable",
+    "search": "Search scholarships...",
+    "allCountries": "All Countries",
+    "eligibility": "Eligibility",
+    "deadline": "Deadline"
+  },
+  "universities": {
+    "title": "Universities",
+    "subtitle": "Explore our partner universities and find the perfect fit for your education",
+    "search": "Search universities...",
+    "allCountries": "All Countries",
+    "details": "Details",
+    "visitWebsite": "Visit University Website",
+    "programsOffered": "Programs Offered",
+    "tuitionCosts": "Tuition Fee",
+    "notFound": "University Not Found",
+    "notFoundMessage": "The university you're looking for doesn't exist.",
+    "backToUniversities": "Back to Universities",
+    "noResults": "No universities found",
+    "noResultsMessage": "Try adjusting your search or filter criteria."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have questions? We'd love to hear from you. Send us a message and we'll respond promptly.",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "workingHours": "Working Hours",
+    "sendMessage": "Send Us a Message",
+    "name": "Name",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully! We will get back to you soon."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong. Please try again.",
+    "tryAgain": "Try Again",
+    "noData": "No data found",
+    "noDataMessage": "There are no items to display at the moment.",
+    "search": "Search...",
+    "back": "Back",
+    "viewAll": "View All",
+    "all": "All",
+    "filter": "Filter",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "save": "Save",
+    "cancel": "Cancel",
+    "status": "Status",
+    "created": "Created",
+    "submit": "Submit",
+    "next": "Next",
+    "prev": "Previous"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "rights": "All rights reserved."
+  },
+  "admin": {
+    "dashboard": "Dashboard Overview",
+    "welcome": "Welcome to your admin dashboard",
+    "totalStudents": "Total Students",
+    "totalApplications": "Total Applications",
+    "totalConsultations": "Total Consultations",
+    "totalUniversities": "Total Universities",
+    "totalBlogs": "Total Blogs",
+    "recentActivity": "Recent Activity",
+    "pendingConsultations": "Pending Consultations",
+    "students": "Students",
+    "manageStudents": "Manage student records",
+    "addStudent": "Add Student",
+    "consultations": "Consultations",
+    "manageConsultations": "Manage student consultation requests",
+    "universities": "Universities",
+    "manageUniversities": "Manage partner universities",
+    "addUniversity": "Add University",
+    "blogs": "Blog Posts",
+    "manageBlogs": "Manage blog content and SEO",
+    "newPost": "New Post",
+    "panel": "Admin Panel"
+  },
+  "form": {
+    "validation": {
+      "nameRequired": "Name must be at least 2 characters",
+      "nameMax": "Name must be less than 100 characters",
+      "emailInvalid": "Invalid email address",
+      "phoneMin": "Phone number must be at least 10 digits",
+      "phoneMax": "Phone number must be less than 20 digits",
+      "countryRequired": "Please select a preferred country",
+      "courseRequired": "Course must be at least 2 characters",
+      "courseMax": "Course must be less than 200 characters",
+      "qualificationRequired": "Please select your qualification",
+      "intakeRequired": "Please select an intake",
+      "messageMax": "Message must be less than 1000 characters",
+      "subjectRequired": "Subject must be at least 2 characters",
+      "subjectMax": "Subject must be less than 200 characters",
+      "messageMin": "Message must be at least 10 characters"
+    }
+  }
+}
