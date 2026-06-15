@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { ArrowRight, Play, GraduationCap, Globe, Award } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -50,23 +51,18 @@ export function Hero() {
           return (
             <SwiperSlide key={i}>
               <div className="relative min-h-[85vh] flex items-center">
-                <img
+                <Image
                   src={slide.img}
                   alt=""
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading={i === 0 ? 'eager' : 'lazy'}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  priority={i === 0}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/20" />
                 <div className="container mx-auto px-4 relative z-10">
                   <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur text-white text-sm mb-6">
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
-                        </span>
-                        {t('trustedBy')}
-                      </div>
                       <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-6 text-white">
                         {t('title')}{' '}
                         <span className="text-primary">{t('titleHighlight')}</span>

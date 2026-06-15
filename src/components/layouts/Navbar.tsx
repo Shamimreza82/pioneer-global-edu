@@ -112,22 +112,24 @@ export function Navbar() {
                     )}
                   </Link>
                   {link.children && openDropdown === link.label && (
-                    <div className="absolute top-full left-0 mt-2 w-56 rounded-xl border bg-popover/95 backdrop-blur-xl p-1.5 shadow-xl">
-                      {link.children.map((child) => {
-                        const Icon = dropdownIcons[child.label] || GraduationCap
-                        return (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
-                          >
-                            <div className="rounded-md bg-primary/10 p-1.5">
-                              <Icon className="h-3.5 w-3.5 text-primary" />
-                            </div>
-                            {navLabel(child.label)}
-                          </Link>
-                        )
-                      })}
+                    <div className="absolute top-full left-0 pt-2 z-50">
+                      <div className="w-56 rounded-xl border bg-popover/95 backdrop-blur-xl p-1.5 shadow-xl">
+                        {link.children.map((child) => {
+                          const Icon = dropdownIcons[child.label] || GraduationCap
+                          return (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
+                            >
+                              <div className="rounded-md bg-primary/10 p-1.5">
+                                <Icon className="h-3.5 w-3.5 text-primary" />
+                              </div>
+                              {navLabel(child.label)}
+                            </Link>
+                          )
+                        })}
+                      </div>
                     </div>
                   )}
                 </div>

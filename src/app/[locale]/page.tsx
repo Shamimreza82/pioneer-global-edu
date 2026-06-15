@@ -1,27 +1,50 @@
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 import { Hero } from '@/components/sections/Hero'
-import { StatsSection } from '@/components/sections/StatsSection'
-import { FeaturedCountries } from '@/components/sections/FeaturedCountries'
-import { ServicesOverview } from '@/components/sections/ServicesOverview'
-import { WhyChooseUs } from '@/components/sections/WhyChooseUs'
-import { Testimonials } from '@/components/sections/Testimonials'
-import { LatestBlogs } from '@/components/sections/LatestBlogs'
-import { FAQSection } from '@/components/sections/FAQSection'
-import { CTASection } from '@/components/sections/CTASection'
-import { ConsultationForm } from '@/components/forms/ConsultationForm'
-import { BlobDivider } from '@/components/common/SectionDivider'
+
+const StatsSection = dynamic(() => import('@/components/sections/StatsSection').then(m => ({ default: m.StatsSection })))
+const FeaturedCountries = dynamic(() => import('@/components/sections/FeaturedCountries').then(m => ({ default: m.FeaturedCountries })))
+const ServicesOverview = dynamic(() => import('@/components/sections/ServicesOverview').then(m => ({ default: m.ServicesOverview })))
+const WhyChooseUs = dynamic(() => import('@/components/sections/WhyChooseUs').then(m => ({ default: m.WhyChooseUs })))
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })))
+const LatestBlogs = dynamic(() => import('@/components/sections/LatestBlogs').then(m => ({ default: m.LatestBlogs })))
+const FAQSection = dynamic(() => import('@/components/sections/FAQSection').then(m => ({ default: m.FAQSection })))
+const CTASection = dynamic(() => import('@/components/sections/CTASection').then(m => ({ default: m.CTASection })))
+const ConsultationForm = dynamic(() => import('@/components/forms/ConsultationForm').then(m => ({ default: m.ConsultationForm })))
+const BlobDivider = dynamic(() => import('@/components/common/SectionDivider').then(m => ({ default: m.BlobDivider })))
+
+function SectionFallback() {
+  return <div className="py-16 md:py-24" />
+}
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <StatsSection />
-      <BlobDivider />
-      <FeaturedCountries />
-      <BlobDivider />
-      <ServicesOverview />
-      <BlobDivider />
-      <WhyChooseUs />
-      <Testimonials />
+      <Suspense fallback={<SectionFallback />}>
+        <StatsSection />
+      </Suspense>
+      <Suspense fallback={null}>
+        <BlobDivider />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <FeaturedCountries />
+      </Suspense>
+      <Suspense fallback={null}>
+        <BlobDivider />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <ServicesOverview />
+      </Suspense>
+      <Suspense fallback={null}>
+        <BlobDivider />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <WhyChooseUs />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <Testimonials />
+      </Suspense>
 
       <section className="py-16 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
@@ -35,14 +58,22 @@ export default function HomePage() {
                 Fill out the form and our expert counselors will reach out within 24 hours.
               </p>
             </div>
-            <ConsultationForm />
+            <Suspense fallback={<SectionFallback />}>
+              <ConsultationForm />
+            </Suspense>
           </div>
         </div>
       </section>
 
-      <LatestBlogs />
-      <FAQSection />
-      <CTASection />
+      <Suspense fallback={<SectionFallback />}>
+        <LatestBlogs />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <FAQSection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <CTASection />
+      </Suspense>
     </>
   )
 }
