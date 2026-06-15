@@ -16,8 +16,13 @@ export function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const { setTheme, resolvedTheme } = useTheme()
   const t = useTranslations('nav')
+  const navLabel = (label: string) => {
+    const key = label.toLowerCase().replace(/[\s-]+/g, '')
+    return t.has(key) ? t(key) : label
+  }
 
   return (
+    <>
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-xl">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 font-bold text-xl">
@@ -42,7 +47,7 @@ export function Navbar() {
                   openDropdown === link.label && 'bg-accent'
                 )}
               >
-                {t(link.label.toLowerCase().replace(/\s+/g, '')) || link.label}
+                {navLabel(link.label)}
                 {link.children && (
                   <ChevronDown className={cn('h-4 w-4 transition-transform', openDropdown === link.label && 'rotate-180')} />
                 )}
@@ -55,7 +60,7 @@ export function Navbar() {
                       href={child.href}
                       className="flex px-3 py-2 text-sm rounded-md hover:bg-accent hover:text-accent-foreground"
                     >
-                      {t(child.label.toLowerCase().replace(/[\s-]+/g, '')) || child.label}
+                      {navLabel(child.label)}
                     </Link>
                   ))}
                 </div>
@@ -88,60 +93,96 @@ export function Navbar() {
           </Button>
         </div>
       </div>
+    </header>
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="border-t lg:hidden overflow-hidden"
-          >
-            <nav className="container mx-auto px-4 py-4 space-y-1">
-              {NAV_LINKS.map((link) => (
-                <div key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="flex items-center justify-between px-3 py-2 text-sm font-medium rounded-md hover:bg-accent"
-                    onClick={() => !link.children && setMobileOpen(false)}
-                  >
-                    {t(link.label.toLowerCase().replace(/\s+/g, '')) || link.label}
-                    {link.children && (
-                      <ChevronDown
-                        className={cn(
-                          'h-4 w-4 transition-transform',
-                          openDropdown === link.label && 'rotate-180'
-                        )}
-                      />
-                    )}
-                  </Link>
-                  {link.children && (
-                    <div className="ml-4 mt-1 space-y-1">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="flex px-3 py-2 text-sm rounded-md hover:bg-accent"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {t(child.label.toLowerCase().replace(/[\s-]+/g, '')) || child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <div className="pt-2">
-                <Button asChild className="w-full">
-                  <Link href="/consultation" onClick={() => setMobileOpen(false)}>
-                    {t('freeConsultation')}
-                  </Link>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[60] bg-black/40 lg:hidden"
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.aside
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 250 }}
+              className="fixed top-0 right-0 z-[70] h-full w-72 border-l bg-background shadow-2xl lg:hidden"
+            >
+              <div className="flex items-center justify-between border-b px-4 h-16">
+                <span className="font-semibold">Menu</span>
+                <Button variant="ghost" size="icon" onClick={() => setMobileOpen(false)}>
+                  <X className="h-5 w-5" />
                 </Button>
               </div>
-            </nav>
-          </motion.div>
+              <nav className="overflow-y-auto h-[calc(100%-4rem)] p-4 space-y-1">
+                {NAV_LINKS.map((link) => {
+                  const isOpen = openDropdown === link.label
+                  return (
+                    <div key={link.href}>
+                      <button
+                        onClick={() => {
+                          if (link.children) {
+                            setOpenDropdown(isOpen ? null : link.label)
+                          } else {
+                            setMobileOpen(false)
+                          }
+                        }}
+                        className="flex w-full items-center justify-between px-3 py-2.5 text-sm font-medium rounded-md hover:bg-accent"
+                      >
+                        {navLabel(link.label)}
+                        {link.children && (
+                          <ChevronDown
+                            className={cn(
+                              'h-4 w-4 transition-transform',
+                              isOpen && 'rotate-180'
+                            )}
+                          />
+                        )}
+                      </button>
+                      {link.children && (
+                        <AnimatePresence initial={false}>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="ml-3 space-y-1 overflow-hidden"
+                            >
+                              {link.children.map((child) => (
+                                <Link
+                                  key={child.href}
+                                  href={child.href}
+                                  className="flex px-3 py-2 text-sm rounded-md hover:bg-accent"
+                                  onClick={() => setMobileOpen(false)}
+                                >
+                                  {navLabel(child.label)}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      )}
+                    </div>
+                  )
+                })}
+                <div className="pt-4">
+                  <Button asChild className="w-full">
+                    <Link href="/consultation" onClick={() => setMobileOpen(false)}>
+                      {t('freeConsultation')}
+                    </Link>
+                  </Button>
+                </div>
+              </nav>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   )
 }

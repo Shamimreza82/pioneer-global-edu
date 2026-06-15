@@ -1,22 +1,23 @@
 'use client'
 
-import { usePathname, useRouter } from '@/i18n/routing'
 import { useLocale } from 'next-intl'
-import { useTransition } from 'react'
+import { usePathname } from 'next/navigation'
 import { Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export function LanguageSwitcher() {
   const locale = useLocale()
-  const router = useRouter()
   const pathname = usePathname()
-  const [isPending, startTransition] = useTransition()
 
   const toggleLocale = () => {
     const next = locale === 'en' ? 'bn' : 'en'
-    startTransition(() => {
-      router.replace(pathname, { locale: next })
-    })
+    const segments = pathname.split('/')
+    if (segments[1] === 'en' || segments[1] === 'bn') {
+      segments[1] = next
+    } else {
+      segments.splice(1, 0, next)
+    }
+    window.location.href = segments.join('/')
   }
 
   return (
@@ -24,7 +25,6 @@ export function LanguageSwitcher() {
       variant="ghost"
       size="sm"
       onClick={toggleLocale}
-      disabled={isPending}
       className="gap-1.5 px-2"
       aria-label={`Switch to ${locale === 'en' ? 'Bangla' : 'English'}`}
     >

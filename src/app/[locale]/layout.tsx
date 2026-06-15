@@ -5,6 +5,7 @@ import { Providers } from '@/providers'
 import { Navbar } from '@/components/layouts/Navbar'
 import { Footer } from '@/components/layouts/Footer'
 import { ScrollToTop } from '@/components/common/ScrollToTop'
+import { WhatsAppButton } from '@/components/common/WhatsAppButton'
 import { notFound } from 'next/navigation'
 
 type Props = {
@@ -38,6 +39,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <main className="flex-1">{children}</main>
         <Footer />
         <ScrollToTop />
+        <WhatsAppButton phone={process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '+15551234567'} />
       </Providers>
     </NextIntlClientProvider>
   )
