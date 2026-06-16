@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ConsultationPage() {
   return (
     <>
-      <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-background">
+      <section className="py-16 md:py-12 bg-gradient-to-b from-primary/5 to-background">
         <div className="container mx-auto px-4">
           <div className="relative w-full aspect-[21/9] rounded-2xl overflow-hidden mb-8">
             <Image src={IMAGES.consultation} alt="" fill className="object-cover" priority sizes="100vw" />

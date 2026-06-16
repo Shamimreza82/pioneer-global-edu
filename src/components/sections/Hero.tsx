@@ -14,19 +14,19 @@ import 'swiper/css/effect-fade'
 
 const slides = [
   {
-    img: 'https://images.unsplash.com/photo-1523050854058-8df90110c7f1?w=1200&q=80',
+    img: '/assat/slider/slider-img-1.jpeg',
     icon: GraduationCap,
     value: '10K+',
     label: 'Students Placed',
   },
   {
-    img: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80',
+    img: '/assat/slider/slider-img-2.jpeg',
     icon: Globe,
     value: '500+',
     label: 'Partner Universities',
   },
   {
-    img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
+    img: '/assat/slider/slider-img-3.jpeg',
     icon: Award,
     value: '98%',
     label: 'Visa Success Rate',

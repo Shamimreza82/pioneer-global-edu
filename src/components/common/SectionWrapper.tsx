@@ -13,7 +13,7 @@ interface SectionWrapperProps {
 
 export function SectionWrapper({ children, className, id, containerClassName }: SectionWrapperProps) {
   return (
-    <section id={id} className={cn('py-16 md:py-24', className)}>
+    <section id={id} className={cn('py-8 md:py-12', className)}>
       <div className={cn('container mx-auto px-4', containerClassName)}>{children}</div>
     </section>
   )
@@ -34,7 +34,7 @@ export function SectionHeader({ title, subtitle, centered = true, className }: S
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       className={cn(
-        'mb-12 max-w-2xl',
+        'mb-6 max-w-2xl',
         centered && 'mx-auto text-center',
         className
       )}

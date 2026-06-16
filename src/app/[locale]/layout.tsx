@@ -39,7 +39,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <main className="flex-1 pt-20">{children}</main>
         <Footer />
         <ScrollToTop />
-        <WhatsAppButton phone={process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '+15551234567'} />
+        <WhatsAppButton phone={process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '+8801571-402416'} />
       </Providers>
     </NextIntlClientProvider>
   )

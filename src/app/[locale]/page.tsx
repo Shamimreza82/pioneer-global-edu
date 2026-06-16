@@ -7,6 +7,7 @@ const FeaturedCountries = dynamic(() => import('@/components/sections/FeaturedCo
 const ServicesOverview = dynamic(() => import('@/components/sections/ServicesOverview').then(m => ({ default: m.ServicesOverview })))
 const WhyChooseUs = dynamic(() => import('@/components/sections/WhyChooseUs').then(m => ({ default: m.WhyChooseUs })))
 const Testimonials = dynamic(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })))
+const PhotoGallery = dynamic(() => import('@/components/sections/PhotoGallery').then(m => ({ default: m.PhotoGallery })))
 const LatestBlogs = dynamic(() => import('@/components/sections/LatestBlogs').then(m => ({ default: m.LatestBlogs })))
 const FAQSection = dynamic(() => import('@/components/sections/FAQSection').then(m => ({ default: m.FAQSection })))
 const CTASection = dynamic(() => import('@/components/sections/CTASection').then(m => ({ default: m.CTASection })))
@@ -41,6 +42,9 @@ export default function HomePage() {
       </Suspense>
       <Suspense fallback={<SectionFallback />}>
         <WhyChooseUs />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <PhotoGallery />
       </Suspense>
       <Suspense fallback={<SectionFallback />}>
         <Testimonials />

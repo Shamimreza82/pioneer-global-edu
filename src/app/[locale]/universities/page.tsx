@@ -35,7 +35,7 @@ export default function UniversitiesPage() {
 
   return (
     <>
-      <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-background">
+      <section className="py-16 md:py-12 bg-gradient-to-b from-primary/5 to-background">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Universities"

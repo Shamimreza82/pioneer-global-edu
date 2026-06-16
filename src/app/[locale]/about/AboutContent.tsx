@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { Target, Eye, Heart, Shield, Lightbulb, Handshake } from 'lucide-react'
+import { Target, Eye, Heart, Shield, Lightbulb, Handshake, GraduationCap } from 'lucide-react'
 import { AnimatedSection } from '@/components/common/SectionWrapper'
 import { IMAGES } from '@/constants'
 
@@ -14,11 +14,19 @@ const values = [
 ]
 
 const team = [
-  { name: 'Dr. Sarah Mitchell', role: 'CEO & Founder', bio: '15+ years in international education, PhD in Higher Education Administration.' },
-  { name: 'James Wilson', role: 'Head of Counseling', bio: 'Certified education counselor with expertise in US and UK admissions.' },
-  { name: 'Emily Chen', role: 'Visa Specialist', bio: '98% visa success rate, expert in complex visa applications worldwide.' },
-  { name: 'Michael Torres', role: 'Director of Partnerships', bio: 'Built relationships with 500+ universities across 50+ countries.' },
+  { name: 'Founder 1', role: 'CEO & Founder', bio: 'Leading the vision of Pioneer Global Edu with years of experience in international education.' },
+  { name: 'Founder 2', role: 'Head of Counseling', bio: 'Expert counselor dedicated to guiding students toward their dream universities.' },
+  { name: 'Founder 3', role: 'Visa Specialist', bio: 'Specialist in visa processing with a proven track record of high success rates.' },
+  { name: 'Founder 4', role: 'Director of Partnerships', bio: 'Building strong relationships with universities across the globe.' },
 ]
+
+const advisor = {
+  name: 'Dr. Md. Kamruzzaman',
+  role: 'Professor, DUET',
+  education: 'B.Sc Engg (DUET), PGDTE (IUT), M. Engg. (BUET), Ph.D. (BUET)',
+  email: 'kamruzzaman@duet.ac.bd',
+  img: '/assat/advisor/advisor.png',
+}
 
 export function AboutContent() {
   const t = useTranslations('about')
@@ -34,11 +42,12 @@ export function AboutContent() {
               <p className="text-muted-foreground">{t('story2')}</p>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-              <div className="rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 p-8 aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl font-bold text-primary mb-2">15+</div>
-                  <div className="text-lg text-muted-foreground">{t('years')}</div>
-                </div>
+              <div className="relative aspect-square rounded-xl overflow-hidden bg-muted">
+                <img
+                  src="/assat/gallary/photo-gallary-1.jpeg"
+                  alt="Pioneer Global Edu"
+                  className="w-full h-full object-cover absolute inset-0"
+                />
               </div>
             </AnimatedSection>
           </div>
@@ -91,6 +100,30 @@ export function AboutContent() {
                 </AnimatedSection>
               ))}
             </div>
+          </div>
+
+          <div className="mt-16">
+            <h3 className="text-2xl font-bold text-center mb-8">Academic Advisor</h3>
+            <AnimatedSection className="max-w-md mx-auto text-center">
+              <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-muted border-4 border-primary/20">
+                <Image
+                  src={advisor.img}
+                  alt={advisor.name}
+                  fill
+                  className="object-cover"
+                  sizes="128px"
+                />
+              </div>
+              <h4 className="text-xl font-semibold">{advisor.name}</h4>
+              <p className="text-primary font-medium">{advisor.role}</p>
+              <p className="text-sm text-muted-foreground mt-2">{advisor.education}</p>
+              <a
+                href={`mailto:${advisor.email}`}
+                className="text-sm text-primary hover:underline mt-1 inline-block"
+              >
+                {advisor.email}
+              </a>
+            </AnimatedSection>
           </div>
         </div>
       </section>
